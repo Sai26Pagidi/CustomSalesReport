@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Define the custom sales report menu item -->
+        <add id="Zlrp_CustomSalesReport::customsalesreport" title="Custom Sales Report" parent="Magento_Reports::report_salesroot" action="zlrp/customsalesreport/customsales" translate="title" module="Zlrp_CustomSalesReport" sortOrder="70"  resource="Zlrp_CustomSalesReport::customsalesreport"/>
+    </menu>
+</config>
