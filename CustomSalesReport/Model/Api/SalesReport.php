@@ -21,13 +21,15 @@ class SalesReport implements SalesReportInterface
             'main_table.entity_id = sales_order_item.order_id',
             ['name' => 'sales_order_item.name', 'qty_ordered' => 'sales_order_item.qty_ordered', 'total_revenue' => '(sales_order_item.row_total - sales_order_item.discount_amount)']
         );
+        // Group by the order ID to ensure uniqueness
+        $collection->getSelect()->group('main_table.entity_id');
         $result = [];
         foreach ($collection as $order) {
             $result[] = [
                 'order_id' => $order->getIncrementId(),
                 'product_name' => $order->getName(),
                 'quantity_sold' => $order->getQtyOrdered(),
-                'total_revenue' => $order->getRevenue(),
+                'total_revenue' => $order->getTotalRevenue(),
                 'sale_date' => $order->getCreatedAt(),
             ];
         }
